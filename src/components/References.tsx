@@ -35,9 +35,9 @@ export function References({ className }: { className?: string }) {
           {references.map((_, index) => (
             <button key={index} aria-label={`Go to reference ${index}`} type="button" className="group cursor-pointer px-1" onClick={() => setReferenceIndex(index)}>
               {index === referenceIndex ? (
-                <div className="rounded-full bg-primary-500 cursor-pointer w-2 h-2"></div>
+                <div className="w-2 h-2 rounded-full bg-primary-500 cursor-pointer"></div>
               ) : (
-                <div className="rounded-full bg-gray-800 dark:bg-gray-200 cursor-pointer w-2 h-2 opacity-20 group-hover:opacity-30"></div>
+                <div className="w-2 h-2 rounded-full bg-gray-800 dark:bg-gray-200 cursor-pointer opacity-20 group-hover:opacity-30"></div>
               )}
             </button>
           ))}
