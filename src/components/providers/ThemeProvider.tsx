@@ -28,6 +28,18 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
   useEffect(() => {
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
     document.documentElement.classList.toggle('dark', isDark);
+    document.body.style.backgroundColor = isDark ? 'black' : 'white';
+
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', isDark ? '#000' : '#fff');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'theme-color';
+      newMeta.content = isDark ? '#000' : '#fff';
+      document.head.appendChild(newMeta);
+    }
   }, [theme]);
 
   const value = {
