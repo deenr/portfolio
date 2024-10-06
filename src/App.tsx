@@ -13,17 +13,17 @@ import { ToolstackAndInspiration } from './components/ToolstackAndInspiration';
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-12">
+      <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-6 md:px-12">
         <Header />
-        <main className="h-full min-h-0 grid grid-cols-[3fr_3fr_1.25fr_1.25fr] grid-rows-[auto_auto_96px_auto] xl:grid-rows-[auto_auto_auto_auto] flex-1 gap-8">
-          <Main className="col-start-1 col-span-2 row-start-1 row-span-2 xl:row-span-3" />
-          <ToolstackAndInspiration className="col-start-3 col-span-2 row-start-1" />
-          <References className="col-start-3 col-span-2 row-start-2" />
-          <GitHubSocial className="col-start-3 col-span-1 row-start-3" />
-          <LinkedInSocial className="col-start-4 col-span-1 row-start-3" />
-          <Reen className="col-start-1 col-span-1 row-start-3 xl:row-start-4 row-span-2 xl:row-span-1" />
-          <Experience className="col-start-2 col-span-1 row-start-3 xl:row-start-4 row-span-2 xl:row-span-1" />
-          <Contact className="col-start-3 col-span-2 row-start-4" />
+        <main className="h-full min-h-0 grid gap-6 md:gap-8 grid-cols-2 lg:grid-cols-[3fr_3fr_1.25fr_1.25fr] md:grid-rows-[auto_auto_96px_auto] xl:grid-rows-[auto_auto_auto_auto] flex-1">
+          <Main className="lg:col-start-1 col-span-2 lg:row-start-1 row-span-2 xl:row-span-3" />
+          <Reen className="lg:col-start-1 col-span-2 lg:col-span-1 lg:row-start-3 xl:row-start-4 lg:row-span-2 xl:row-span-1" />
+          <Experience className="lg:col-start-2 col-span-2 lg:col-span-1 lg:row-start-3 xl:row-start-4 lg:row-span-2 xl:row-span-1" />
+          <References className="lg:col-start-3 col-span-2 lg:row-start-2" />
+          <ToolstackAndInspiration className="lg:col-start-3 col-span-2 lg:row-start-1" />
+          <GitHubSocial className="lg:col-start-3 col-span-1 lg:row-start-3" />
+          <LinkedInSocial className="lg:col-start-4 col-span-1 lg:row-start-3" />
+          <Contact className="lg:col-start-3 col-span-2 lg:row-start-4" />
         </main>
         <Background />
       </div>
