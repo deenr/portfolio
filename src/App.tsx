@@ -15,15 +15,15 @@ function App() {
     <ThemeProvider>
       <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-12">
         <Header />
-        <main className="h-full min-h-0 grid grid-cols-[3fr_3fr_196px_196px] grid-rows-[auto_auto_auto_auto] flex-1 gap-8">
-          <Main className="col-start-1 col-span-2 row-start-1 row-span-3" />
-          <ToolstackAndInspiration className="col-span-2 row-start-1" />
-          <References className="col-span-2 row-start-2" />
-          <GitHubSocial className="col-span-1 row-start-3" />
-          <LinkedInSocial className="col-span-1 row-start-3" />
-          <Reen className="col-span-1 row-start-4" />
-          <Experience className="col-span-1 row-start-4" />
-          <Contact className="col-span-2 row-start-4" />
+        <main className="h-full min-h-0 grid grid-cols-[3fr_3fr_1.25fr_1.25fr] grid-rows-[auto_auto_96px_auto] xl:grid-rows-[auto_auto_auto_auto] flex-1 gap-8">
+          <Main className="col-start-1 col-span-2 row-start-1 row-span-2 xl:row-span-3" />
+          <ToolstackAndInspiration className="col-start-3 col-span-2 row-start-1" />
+          <References className="col-start-3 col-span-2 row-start-2" />
+          <GitHubSocial className="col-start-3 col-span-1 row-start-3" />
+          <LinkedInSocial className="col-start-4 col-span-1 row-start-3" />
+          <Reen className="col-start-1 col-span-1 row-start-3 xl:row-start-4 row-span-2 xl:row-span-1" />
+          <Experience className="col-start-2 col-span-1 row-start-3 xl:row-start-4 row-span-2 xl:row-span-1" />
+          <Contact className="col-start-3 col-span-2 row-start-4" />
         </main>
         <Background />
       </div>

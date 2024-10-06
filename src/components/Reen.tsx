@@ -6,7 +6,7 @@ export function Reen({ className }: { className?: string }) {
       <ReenIcon className="w-fit h-9 text-primary-500" />
       <p className="text-base text-normal text-gray-900 dark:text-white">
         Founder of{' '}
-        <a className="group relative underline decoration-primary-500 overflow-hidden" href="https://reen.digital" target="_blank">
+        <a className="group relative underline decoration-primary-500 overflow-hidden hover:no-underline hover:text-primary-500" href="https://reen.digital" target="_blank">
           reen.digital
         </a>
         , where we connect your ideas to their digital realization. With expertise in full-stack development, I’m dedicated to transforming concepts into impactful solutions.

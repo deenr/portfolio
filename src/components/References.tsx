@@ -9,17 +9,17 @@ interface Reference {
 export function References({ className }: { className?: string }) {
   const references: Reference[] = [
     {
-      author: 'Vincent Vandenheede',
+      author: 'Jane Doe',
       role: 'Operations Manager',
       text: 'Working with Dean has been one of the best investments we’ve ever made.'
     },
     {
-      author: 'Karel De Smet',
+      author: 'Mary Major',
       role: 'Front-end Developer',
       text: 'Dean is easily one of the most thorough and thoughtful developers I’ve ever met.'
     },
     {
-      author: 'Yannick Van Leuvenhage',
+      author: 'Jim Smith',
       role: 'Project Manager',
       text: "As someone who's worked with Dean over the years, I can't recommend him enough."
     }

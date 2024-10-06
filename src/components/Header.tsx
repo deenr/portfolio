@@ -21,9 +21,12 @@ export function Header() {
           </div>
           <p className="text-gray-900 dark:text-white text-base font-medium">Available for new opportunities</p>
         </div> */}
-        <button className="w-fit h-fit flex flex-row gap-1.5 py-3 px-4 items-center rounded-[32px] bg-primary-500 hover:bg-opacity-30 border-[1px] border-white border-opacity-5 hover:shadow-button-inset">
-          <p className="text-white text-sm font-medium">Contact me</p>
-          <ArrowUpRight className="w-4 h-4 text-white" />
+        <button className="group w-fit h-fit flex flex-row gap-1.5 py-3 px-4 items-center rounded-[32px] text-white bg-primary-500 hover:bg-opacity-30 border-[1px] border-white border-opacity-5 hover:shadow-button-inset">
+          <p className="text-sm font-medium">Contact me</p>
+          <div className="relative w-4 h-4">
+            <ArrowUpRight className="w-4 h-4 transition-all duration-300 ease-in-out transform group-hover:-translate-y-4 group-hover:translate-x-4 opacity-100 group-hover:opacity-0" />
+            <ArrowUpRight className="absolute top-4 -left-4 w-4 h-4 transition-all duration-300 ease-in-out opacity-0 group-hover:-translate-y-4 group-hover:translate-x-4 group-hover:opacity-100" />
+          </div>
         </button>
       </div>
     </header>
