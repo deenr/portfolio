@@ -1,4 +1,3 @@
-import { Background } from './components/Background';
 import { Contact } from './components/Contact';
 import { Experience } from './components/Experience';
 import { GitHubSocial } from './components/GitHubSocial';
@@ -50,7 +49,7 @@ function App() {
             <Socials />
           </div> */}
         </main>
-        <Background />
+        {/* <Background /> */}
       </div>
     </ThemeProvider>
   );
