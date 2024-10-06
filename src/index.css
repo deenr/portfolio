@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  max-height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
