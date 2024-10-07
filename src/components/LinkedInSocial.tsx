@@ -2,10 +2,15 @@ import { LinkedIn } from './icons/LinkedIn';
 
 export function LinkedInSocial({ className }: { className?: string }) {
   return (
-    <a className={className} href="https://www.linkedin.com/in/dean-reymen/" target="_blank" rel="noopener noreferrer">
-      <section className="group w-full p-7 flex flex-row gap-2 items-center justify-center bg-white dark:bg-black dark:bg-opacity-50 rounded-[32px] cursor-pointer">
-        <LinkedIn className="w-6 h-6 text-gray-900 dark:text-white" />
-        <p className="hidden group-hover:block text-gray-900 dark:text-white text-sm font-medium">Let's connect</p>
+    <a
+      className={`group w-full flex items-center justify-center min-h-[70px] bg-white dark:bg-black dark:bg-opacity-50 rounded-[32px] cursor-pointer overflow-hidden  ${className}`}
+      href="https://www.linkedin.com/in/dean-reymen/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <section className="w-fit h-full flex gap-2 items-center justify-center transition-all duration-300 ease-in-out">
+        <LinkedIn className="w-6 h-6 text-gray-900 dark:text-white flex-shrink-0" />
+        <p className="text-gray-900 dark:text-white text-sm font-medium w-0 group-hover:w-full overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out">Let's connect</p>
       </section>
     </a>
   );
