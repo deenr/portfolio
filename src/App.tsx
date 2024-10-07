@@ -1,4 +1,4 @@
-import Background from './components/Background';
+import { Background } from './components/BackgroundSVG';
 import { Contact } from './components/Contact';
 import { Experience } from './components/Experience';
 import { GitHubSocial } from './components/GitHubSocial';
