@@ -12,6 +12,7 @@ const Background: React.FC = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
+    console.log(theme);
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -29,14 +30,14 @@ const Background: React.FC = () => {
 
       const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2);
 
-      if (theme === 'dark') {
-        gradient.addColorStop(0, 'rgba(224, 71, 42, 0.2)'); // #e0472a with 20% opacity
-        gradient.addColorStop(1, 'rgba(224, 71, 42, 0)'); // #e0472a with 0% opacity
-        ctx.fillStyle = 'rgb(0, 0, 0)';
-      } else {
+      if (theme === 'light') {
         gradient.addColorStop(0, 'rgba(224, 71, 42, 0.2)'); // #e0472a with 20% opacity
         gradient.addColorStop(1, 'rgba(224, 71, 42, 0)'); // #e0472a with 0% opacity
         ctx.fillStyle = 'rgb(255, 255, 255)';
+      } else {
+        gradient.addColorStop(0, 'rgba(224, 71, 42, 0.2)'); // #e0472a with 20% opacity
+        gradient.addColorStop(1, 'rgba(224, 71, 42, 0)'); // #e0472a with 0% opacity
+        ctx.fillStyle = 'rgb(0, 0, 0)';
       }
 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
