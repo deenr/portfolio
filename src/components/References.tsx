@@ -49,7 +49,7 @@ export function References({ className }: { className?: string }) {
       </div>
       <Swiper className="w-full mt-4" loop onSlideChange={({ realIndex }) => setReferenceIndex(realIndex)} onSwiper={setSwiper}>
         {references.map((reference, index) => (
-          <SwiperSlide key={index} className="px-7">
+          <SwiperSlide key={index} className="h-fit px-7">
             <p className="mt-3 text-gray-900 dark:text-white text-lg font-medium">“{reference.text}”</p>
             <div className="mt-1 flex flex-col text-gray-500 dark:text-gray-300 text-sm">
               <p className="font-medium">
