@@ -8,12 +8,9 @@ export function Background() {
 
   useEffect(() => {
     // Preload both images
-    const preloadImages = [lightBackground, darkBackground];
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+    const img = new Image();
+    img.src = theme === 'light' ? darkBackground : lightBackground;
+  }, [theme]);
 
   return (
     <>
