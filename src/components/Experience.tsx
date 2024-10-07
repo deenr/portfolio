@@ -1,4 +1,5 @@
 import { Download } from 'lucide-react';
+import resume from '../assets/deanreymenCV.pdf';
 
 export function Experience({ className }: { className?: string }) {
   return (
@@ -9,7 +10,7 @@ export function Experience({ className }: { className?: string }) {
         <p className="font-regular">Verhaert Digital Innovation, 2022 — 2024</p>
       </div>
       <p className="mt-3 text-gray-900 dark:text-white">Obtained a solid foundation in comprehensive web development and implementation.</p>
-      <a href="https://github.com/deenr/portfolio/blob/main/deanreymenCV.pdf" download="deanreymen_cv.pdf" target="_blank">
+      <a href={resume} download="deanreymen_cv.pdf" target="_blank">
         <button className="absolute top-7 right-7 group w-fit h-fit flex flex-row items-center gap-1.5 py-1 px-3 rounded-[32px] overflow-hidden border-[1px] border-dashed border-gray-300 dark:border-gray-600 text-sm text-dark-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white dark:hover:bg-opacity-10">
           <div className="relative w-4 h-4">
             <Download className="w-4 h-4 transition-all duration-300 ease-in-out transform group-hover:translate-y-4 opacity-100 group-hover:opacity-0" />

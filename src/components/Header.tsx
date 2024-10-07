@@ -21,7 +21,10 @@ export function Header() {
           </div>
           <p className="text-gray-900 dark:text-white text-base font-medium">Available for new opportunities</p>
         </div> */}
-        <button className="group w-fit h-fit flex flex-row gap-1.5 py-2 xs:py-3 px-3 xs:px-4 items-center rounded-[32px] text-white bg-primary-500 border-[1px] border-white border-opacity-5">
+        <button
+          className="group w-fit h-fit flex flex-row gap-1.5 py-2 xs:py-3 px-3 xs:px-4 items-center rounded-[32px] text-white bg-primary-500 border-[1px] border-white border-opacity-5"
+          onClick={() => (window.location.href = 'mailto:reymen@outlook.be')}
+        >
           <p className="text-sm font-medium text-nowrap">
             Contact<span className="hidden xs:inline"> me</span>
           </p>
