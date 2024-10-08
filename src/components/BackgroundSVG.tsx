@@ -14,7 +14,7 @@ export function Background() {
 
   return (
     <>
-      <img className="absolute -z-10 overflow-hidden inset-0 w-full h-full object-fill" src={theme === 'light' ? lightBackground : darkBackground} alt="" />
+      <img className="absolute -z-10 overflow-hidden inset-0 w-full h-full object-fill select-none" src={theme === 'light' ? lightBackground : darkBackground} alt="" />
     </>
   );
 }

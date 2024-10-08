@@ -5,4 +5,9 @@
 body {
   max-height: 100vh;
   font-family: 'Inter', sans-serif;
+
+  ::selection {
+    background-color: #e0472a;
+    color: #030712;
+  }
 }

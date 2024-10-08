@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="w-full flex flex-row justify-between">
       <div className="flex flex-row gap-3 items-center">
-        <figure className="w-10 min-w-10 xs:w-12 h-10 min-h-10 xs:h-12 rounded-full">
+        <figure className="w-10 min-w-10 xs:w-12 h-10 min-h-10 xs:h-12 rounded-full select-none">
           <img className="w-full h-full rounded-full " src={profilePicture} alt="Portrait of Dean Reymen" />
         </figure>
         <div>
@@ -22,7 +22,7 @@ export function Header() {
           <p className="text-gray-900 dark:text-white text-base font-medium">Available for new opportunities</p>
         </div> */}
         <button
-          className="group w-fit h-fit flex flex-row gap-1.5 py-2 xs:py-3 px-3 xs:px-4 items-center rounded-[32px] text-white bg-primary-500 border-[1px] border-white border-opacity-5"
+          className="group w-fit h-fit flex flex-row gap-1.5 py-2 xs:py-3 px-3 xs:px-4 items-center rounded-[32px] text-white bg-primary-500 border-[1px] border-white border-opacity-5 selection-secondary"
           onClick={() => (window.location.href = 'mailto:reymen@outlook.be')}
         >
           <p className="text-sm font-medium text-nowrap">
