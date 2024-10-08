@@ -46,7 +46,7 @@ export function References({ className }: { className?: string }) {
         ))}
       </div>
       <div className="absolute h-full pt-7 px-7 flex flex-row justify-between"></div>
-      <Swiper className="w-full" loop onSlideChange={({ realIndex }) => setReferenceIndex(realIndex)} onSwiper={setSwiper}>
+      <Swiper className="w-full" onSlideChange={({ realIndex }) => setReferenceIndex(realIndex)} onSwiper={setSwiper}>
         {references.map((reference, index) => (
           <SwiperSlide key={index} className="h-fit pt-[66px] pb-7 px-7">
             <p className="text-gray-900 dark:text-white text-lg font-medium">“{reference.text}”</p>
