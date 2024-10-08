@@ -8,7 +8,7 @@ export function Contact({ className }: { className?: string }) {
         <p className="text-gray-900 dark:text-white text-md font-medium">Think I’d be a good fit for your team or freelance project? Let’s collaborate and bring your ideas to life!</p>
         <button
           className="group w-fit h-fit flex flex-row items-center gap-1.5 py-3 px-4 rounded-[32px] overflow-hidden border-[1px] border-dashed border-gray-300 dark:border-gray-600 text-sm text-dark-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white dark:hover:bg-opacity-10"
-          onClick={() => (window.location.href = 'mailto:reymen@outlook.be')}
+          onClick={() => (window.location.href = 'mailto:hi@deanreymen.be')}
         >
           <p className="text-sm font-medium">Send me an email</p>
           <div className="relative w-4 h-4">

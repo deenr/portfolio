@@ -23,7 +23,7 @@ export function Header() {
         </div> */}
         <button
           className="group w-fit h-fit flex flex-row gap-1.5 py-2 xs:py-3 px-3 xs:px-4 items-center rounded-[32px] text-white bg-primary-500 border-[1px] border-white border-opacity-5 selection-secondary"
-          onClick={() => (window.location.href = 'mailto:reymen@outlook.be')}
+          onClick={() => (window.location.href = 'mailto:hi@deanreymen.be')}
         >
           <p className="text-sm font-medium text-nowrap">
             Contact<span className="hidden xs:inline"> me</span>
