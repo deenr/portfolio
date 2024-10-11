@@ -26,7 +26,10 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
   const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme);
 
   useEffect(() => {
-    const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (theme === 'system') {
+      setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
+    const isDark = theme === 'dark';
     document.documentElement.classList.toggle('dark', isDark);
     document.body.style.backgroundColor = isDark ? 'black' : 'white';
 
