@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react';
-import resume from '../assets/deanreymenCV.pdf';
+import resume from '../assets/deanreymen_public_cv.pdf';
 
 export function Experience({ className }: { className?: string }) {
   return (
