@@ -15,7 +15,7 @@ function App() {
     <ThemeProvider>
       <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-6 lg:px-12">
         <Header />
-        <main className="h-full min-h-0 grid gap-6 lg:gap-8 grid-cols-2 md:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] lg:grid-cols-[1fr_1fr_.4fr_.6fr] xl:grid-cols-[4fr_4fr_2fr_2fr] lg:grid-rows-[auto_auto_auto_auto] flex-1 ">
+        <main className="h-full min-h-0 grid gap-4 lg:gap-5 grid-cols-2 md:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] lg:grid-cols-[1fr_1fr_.4fr_.6fr] xl:grid-cols-[4fr_4fr_2fr_2fr] lg:grid-rows-[auto_auto_auto_auto] flex-1 ">
           <Main className="lg:col-start-1 col-span-2 md:col-span-6 lg:col-span-2 lg:row-start-1 lg:row-span-1 xl:row-span-3" />
           <Experience className="md:col-start-1 col-span-2 md:col-span-3 lg:col-span-1 xl:row-start-4 lg:row-span-2 xl:row-span-1" />
           <Education className="md:col-start-4 lg:col-start-2 col-span-2 md:col-span-3 lg:col-span-1 xl:row-start-4 lg:row-span-2 xl:row-span-1" />

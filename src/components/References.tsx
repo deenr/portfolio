@@ -20,9 +20,9 @@ export function References({ className }: { className?: string }) {
       text: 'Working with Dean has been one of the best investments we’ve ever made.'
     },
     {
-      author: 'Mary Major',
+      author: 'Karel De Smet',
       role: 'Front-end Developer',
-      text: 'Dean is easily one of the most thorough and thoughtful developers I’ve ever met.'
+      text: 'As Dean’s mentor, I saw him quickly make an impact by learning fast, asking the right questions, and handling tasks with ease. He’d be a great addition to any team!'
     },
     {
       author: 'Jim Smith',
