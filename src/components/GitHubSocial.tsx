@@ -3,7 +3,7 @@ import { GitHub } from './icons/GitHub';
 export function GitHubSocial({ className }: { className?: string }) {
   return (
     <a
-      className={`group w-full flex min-h-[70px] h-full bg-white dark:bg-black dark:bg-opacity-50 rounded-[32px] cursor-pointer overflow-hidden  ${className}`}
+      className={`group w-full flex min-h-[70px] h-fit bg-white dark:bg-black dark:bg-opacity-50 rounded-[32px] cursor-pointer overflow-hidden  ${className}`}
       href="https://github.com/deenr/"
       target="_blank"
       rel="noopener noreferrer"
