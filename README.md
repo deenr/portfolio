@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Portfolio
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 About This Project
 
-## Expanding the ESLint configuration
+This is my personal portfolio website, built to showcase my skills, projects, and experiences as a developer. It features a clean and modern design, allowing visitors to explore my work and get to know me better.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Built With
 
-- Configure the top-level `parserOptions` property like this:
+- [React](https://reactjs.org) – A JavaScript library for building user interfaces
+- [Vite](https://vitejs.dev) – A fast build tool and development server
+- [Tailwind CSS](https://tailwindcss.com) – A utility-first CSS framework for styling
+- [Prettier](https://prettier.io) – Code formatter for maintaining code quality
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
-});
-```
+## 🚦 Getting Started
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/deenr/portfolio.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd portfolio
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Run the application:**
+   ```bash
+   npm run dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules
-  }
-});
-```
+The portfolio will be accessible at `http://localhost:5173`. 🎉
+
+## 💻 Development
+
+### Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the app for production
+- `npm run format` - Format the code using Prettier
+
+## 📫 Contact
+
+- **X**: [@deanreymen](https://x.com/deanreymen)
+- **LinkedIn**: [/in/dean-reymen](https://linkedin.com/in/dean-reymen)
+
+
+Let’s connect and build something great together! 🌍✨
