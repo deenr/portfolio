@@ -1,19 +1,23 @@
-
 # Portfolio
-
 
 ## 🚀 About This Project
 
-This is my personal portfolio website, built to showcase my skills, projects, and experiences as a developer. It features a clean and modern design, allowing visitors to explore my work and get to know me better.
+A modern, responsive portfolio website showcasing my journey as a full-stack developer. Built with a focus on clean design, dark/light theme support, and smooth animations. The site features my professional experience, education, toolstack, and ways to connect.
 
 ## 🛠️ Built With
 
-- [React](https://reactjs.org) – A JavaScript library for building user interfaces
-- [Vite](https://vitejs.dev) – A fast build tool and development server
-- [Tailwind CSS](https://tailwindcss.com) – A utility-first CSS framework for styling
-- [Prettier](https://prettier.io) – Code formatter for maintaining code quality
+- [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) – For building a robust UI with type safety
+- [Vite](https://vitejs.dev) – Next-generation frontend tooling
+- [Tailwind CSS](https://tailwindcss.com) – For utility-first styling
+- [Swiper](https://swiperjs.com) – For smooth reference testimonials
+- [Lucide React](https://lucide.dev) – Beautiful open-source icons
+- [ESLint](https://eslint.org) – For code quality and consistency
 
 ## 🚦 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
 
 ### Installation
 
@@ -29,25 +33,32 @@ This is my personal portfolio website, built to showcase my skills, projects, an
    ```bash
    npm install
    ```
-4. **Run the application:**
+4. **Run the development server:**
    ```bash
    npm run dev
    ```
 
-The portfolio will be accessible at `http://localhost:5173`. 🎉
+The site will be available at `http://localhost:5173` 🎉
 
 ## 💻 Development
 
 ### Available Scripts
 
 - `npm run dev` - Start the development server
-- `npm run build` - Build the app for production
-- `npm run format` - Format the code using Prettier
+- `npm run build` - Build for production
+- `npm run lint` - Lint the codebase
+- `npm run preview` - Preview the production build
+
+## 🎨 Features
+
+- Responsive design that works on all devices
+- Dark/light theme with system preference detection
+- Smooth hover animations
+- SEO optimized with meta tags
 
 ## 📫 Contact
 
 - **X**: [@deanreymen](https://x.com/deanreymen)
 - **LinkedIn**: [/in/dean-reymen](https://linkedin.com/in/dean-reymen)
 
-
-Let’s connect and build something great together! 🌍✨
+Let's connect and build something great together! 🌍✨
