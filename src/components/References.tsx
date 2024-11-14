@@ -15,19 +15,14 @@ export function References({ className }: { className?: string }) {
 
   const references: Reference[] = [
     {
-      author: 'Jane Doe',
-      role: 'Operations Manager',
-      text: 'Working with Dean has been one of the best investments we’ve ever made.'
-    },
-    {
       author: 'Karel De Smet',
       role: 'Front-end Developer',
       text: 'As Dean’s mentor, I saw him quickly make an impact by learning fast, asking the right questions, and handling tasks with ease. He’d be a great addition to any team!'
     },
     {
-      author: 'Jim Smith',
-      role: 'Project Manager',
-      text: "As someone who's worked with Dean over the years, I can't recommend him enough."
+      author: 'Vincent Van den Heede',
+      role: 'Operations Manager',
+      text: 'Dean is a motivated, diligent developer. In two years as his manager, I saw his professionalism, problem-solving, and eagerness to learn.'
     }
   ];
 
