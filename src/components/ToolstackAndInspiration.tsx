@@ -1,5 +1,5 @@
 export function ToolstackAndInspiration({ className }: { className?: string }) {
-  const toolstack = ['Angular', 'TypeScript', 'HTML', 'SCSS', 'RxJS', 'Unit testing', 'Git', 'Node.JS', 'NestJS', 'GraphQL', 'React'];
+  const toolstack = ['Angular', 'TypeScript', 'HTML', 'SCSS', 'RxJS', 'Unit testing', 'Git', 'Node.JS', 'NestJS', 'GraphQL', 'React', 'Tailwind'];
   const inspirations = ['Mountains', 'Photography', 'Motorcycles', 'Hiking', 'Learning', 'Challenges'];
 
   return (

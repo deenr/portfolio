@@ -11,6 +11,7 @@ export function GitHubSocial({ className }: { className?: string }) {
       <section className="w-fit h-full flex flex-col justify-between p-7">
         <GitHub className="w-6 h-6 text-gray-900 dark:text-white flex-shrink-0" />
         <p className="mt-6 text-gray-900 dark:text-white">@deenr</p>
+        <p className="text-gray-500 dark:text-gray-300 text-sm font-regular">Follow me</p>
       </section>
     </a>
     // <a
