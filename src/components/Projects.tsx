@@ -74,7 +74,7 @@ export function ProjectCard({ title, description, technologies, githubLink, proj
             href={githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-fit h-fit flex-nowrap hidden md:flex flex-row items-center gap-1.5 overflow-hidden text-sm text-gray-500 dark:text-gray-300"
+            className="group w-fit h-fit flex-nowrap hidden xs:flex flex-row items-center gap-1.5 overflow-hidden text-sm text-gray-500 dark:text-gray-300"
           >
             <div className="relative w-4 h-4">
               <Link2 className="w-4 h-4 transition-all duration-300 ease-in-out transform group-hover:translate-x-4 opacity-100 group-hover:opacity-0" />
