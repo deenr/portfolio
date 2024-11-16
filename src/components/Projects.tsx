@@ -68,15 +68,15 @@ export function ProjectCard({ title, description, technologies, githubLink, proj
             <ArrowUpRight className="absolute top-6 -left-6 w-4 h-4 lg:w-6 lg:h-6 transition-all duration-300 ease-in-out opacity-0 group-hover:-translate-y-6 group-hover:translate-x-6 group-hover:opacity-100" />
           </div>
         </a>
-        <div className="flex flex-row gap-4 flex-1 justify-end">
+        <div className="flex flex-row gap-4 flex-1 justify-end items-center">
           {title === 'Sphience' ? <Credentials /> : <></>}
           <a
             href={githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-fit h-fit flex-nowrap hidden xs:flex flex-row items-center gap-1.5 overflow-hidden text-sm text-gray-500 dark:text-gray-300"
+            className="group w-fit h-fit flex-nowrap flex flex-row items-center gap-1.5 overflow-hidden text-sm text-gray-500 dark:text-gray-300"
           >
-            <div className="relative w-4 h-4">
+            <div className="hidden xs:block relative w-4 h-4">
               <Link2 className="w-4 h-4 transition-all duration-300 ease-in-out transform group-hover:translate-x-4 opacity-100 group-hover:opacity-0" />
               <Link2 className="absolute -left-4 top-0 w-4 h-4 transition-all duration-300 ease-in-out opacity-0 group-hover:translate-x-4 group-hover:opacity-100" />
             </div>
@@ -185,7 +185,7 @@ function Credentials({ className }: { className?: string }) {
         onMouseLeave={hideTooltip}
         aria-describedby="credentials-tooltip"
       >
-        <div className="relative w-4 h-4">
+        <div className="relative hidden xs:block w-4 h-4">
           <Stars className="w-4 h-4 transition-all duration-300 ease-in-out transform group-hover:translate-x-4 opacity-100 group-hover:opacity-0" />
           <Stars className="absolute -left-4 top-0 w-4 h-4 transition-all duration-300 ease-in-out opacity-0 group-hover:translate-x-4 group-hover:opacity-100" />
         </div>
