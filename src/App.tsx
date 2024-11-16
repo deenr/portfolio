@@ -13,7 +13,7 @@ import { ToolstackAndInspiration } from './components/ToolstackAndInspiration';
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-6 lg:px-12">
+      <div className="relative min-h-screen flex flex-col gap-8 pt-8 pb-12 px-4 md:px-6 lg:px-12">
         <Header />
         <main className="flex flex-col md:grid gap-4 lg:gap-5 grid-cols-[1fr,1fr] xl:grid-cols-[2fr,1fr]">
           <Main className="col-start-1 col-span-2 xl:col-span-1 row-start-1 xl:row-span-2" />
@@ -23,8 +23,8 @@ function App() {
             <ProjectList className="col-start-1 col-span-2 md:col-span-5 xl:col-span-1 row-start-1 row-span-1 md:row-span-2" />
             <References className="col-start-1 xl:col-start-2 col-span-2 md:col-span-4 xl:col-span-1 row-start-2 md:row-start-3 xl:row-start-1 row-span-1" />
             <Contact className="col-start-1 md:col-start-5 xl:col-start-3 col-span-2 md:col-span-3 xl:col-span-1 row-start-4 md:row-start-3 xl:row-start-1 row-span-1" />
-            <GitHubSocial className="h-full col-start-1 md:col-start-6 xl:col-start-2 col-span-1 md:col-span-2 xl:col-span-1 row-start-3 md:row-start-1 xl:row-start-2 row-span-1" />
-            <LinkedInSocial className="h-full col-start-2 md:col-start-6 xl:col-start-3 col-span-1 md:col-span-2 xl:col-span-1 row-start-3 md:row-start-2 row-span-1" />
+            <GitHubSocial className="h-fit md:h-full col-start-1 md:col-start-6 xl:col-start-2 col-span-1 md:col-span-2 xl:col-span-1 row-start-3 md:row-start-1 xl:row-start-2 row-span-1" />
+            <LinkedInSocial className="h-fit md:h-full col-start-2 md:col-start-6 xl:col-start-3 col-span-1 md:col-span-2 xl:col-span-1 row-start-3 md:row-start-2 row-span-1" />
           </div>
         </main>
         <Background />

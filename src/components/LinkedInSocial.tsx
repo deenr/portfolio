@@ -10,10 +10,12 @@ export function LinkedInSocial({ className }: { className?: string }) {
     >
       <section className="w-fit h-full flex flex-col justify-between p-7">
         <LinkedIn className="w-6 h-6 text-gray-900 dark:text-white flex-shrink-0" />
-        <p className="mt-6 text-gray-900 dark:text-white text-nowrap">
-          <span className="hidden xs:inline">in/</span>dean-reymen
-        </p>
-        <p className="text-gray-500 dark:text-gray-300 text-sm font-regular">Let's connect</p>
+        <div>
+          <p className="mt-6 text-gray-900 dark:text-white text-nowrap">
+            <span className="hidden xs:inline">in/</span>dean-reymen
+          </p>
+          <p className="text-gray-500 dark:text-gray-300 text-sm font-regular">Let's connect</p>
+        </div>
       </section>
     </a>
     // <a
