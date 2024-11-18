@@ -106,7 +106,7 @@ function Credentials({ className }: { className?: string }) {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLParagraphElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<any | null>(null);
 
   const showTooltip = () => {
     if (timeoutRef.current) {

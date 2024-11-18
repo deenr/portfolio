@@ -2,7 +2,7 @@
 
 ## 🚀 About This Project
 
-A modern, responsive portfolio website showcasing my journey as a full-stack developer. Built with a focus on clean design, dark/light theme support, and smooth animations. The site features my professional experience, education, toolstack, and ways to connect.
+A modern, responsive portfolio website showcasing my journey as a frontend developer. Built with a focus on clean design, dark/light theme support, and smooth animations. The site features my professional experience, education, toolstack, and ways to connect.
 
 ## 🛠️ Built With
 

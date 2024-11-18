@@ -9,7 +9,7 @@ export function Reen({ className }: { className?: string }) {
         <a className="group relative underline decoration-primary-500 overflow-hidden hover:no-underline hover:text-primary-500" href="https://reen.digital" target="_blank">
           reen.digital
         </a>
-        , where we connect your ideas to their digital realization. With expertise in full-stack development, I’m dedicated to transforming concepts into impactful solutions.
+        , where we connect your ideas to their digital realization. With expertise in frontend development, I’m dedicated to transforming concepts into impactful solutions.
       </p>
     </section>
   );
