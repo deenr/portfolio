@@ -12,7 +12,7 @@ const experiences: Card[] = [
   {
     title: 'Frontend Developer',
     organization: 'Verhaert Digital Innovation',
-    duration: 'Oct 2022 — Oct 2024',
+    duration: 'Oct 2022 — Dec 2024',
     description: 'Obtained a solid foundation in comprehensive web development and implementation.'
   },
   {
