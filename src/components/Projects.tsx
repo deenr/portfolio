@@ -5,10 +5,10 @@ const projects = [
   {
     title: 'Rise2Role',
     description: 'Rise2Role streamlines your job search with a simple Kanban board to track applications, stay organized, and visualize progress.',
-    technologies: ['React', 'Tailwind', 'shadcn/ui'],
+    technologies: ['Next.js', 'Tailwind', 'shadcn/ui', 'Supabase'],
     githubLink: 'https://github.com/deenr/rise2role',
-    projectLink: 'https://rise2role.deanreymen.be/preview',
-    creationDate: 'Nov 2024'
+    projectLink: 'https://r2r.deanreymen.be',
+    creationDate: 'Dec 2024'
   },
   // {
   //   title: 'Selfgrown',
