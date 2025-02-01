@@ -6,7 +6,7 @@ const projects = [
     title: 'Rise2Role',
     description: 'Rise2Role streamlines your job search with a simple Kanban board to track applications, stay organized, and visualize progress.',
     technologies: ['Next.js', 'Tailwind', 'shadcn/ui', 'Supabase'],
-    githubLink: 'https://github.com/deenr/rise2role',
+    githubLink: 'https://github.com/deenr/rise2role-nextjs',
     projectLink: 'https://r2r.deanreymen.be',
     creationDate: 'Dec 2024'
   },
