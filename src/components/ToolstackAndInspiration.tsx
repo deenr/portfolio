@@ -1,6 +1,6 @@
 export function ToolstackAndInspiration({ className }: { className?: string }) {
-  const toolstack = ['Angular', 'TypeScript', 'HTML', 'SCSS', 'RxJS', 'Unit testing', 'Git', 'Node.JS', 'NestJS', 'GraphQL', 'React'];
-  const inspirations = ['Mountains', 'Photography', 'Motorcycles', 'Hiking', 'Learning', 'Challenges'];
+  const toolstack = ['Angular', 'TypeScript', 'HTML', 'SCSS', 'RxJS', 'Unit testing', 'Git', 'Node.JS', 'NestJS', 'GraphQL', 'React', 'Tailwind'];
+  const inspirations = ['Mountains', 'Photography', 'Motorcycles', 'Hiking', 'Brewing coffee'];
 
   return (
     <section className={`w-full p-7 flex flex-col gap-4 bg-white dark:bg-black dark:bg-opacity-50 rounded-[32px] ${className}`}>

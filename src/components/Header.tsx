@@ -10,7 +10,7 @@ export function Header() {
         </figure>
         <div>
           <h1 className="text-gray-900 dark:text-white text-base font-medium">Dean Reymen</h1>
-          <p className="text-gray-500 dark:text-gray-400 text-sm xs:text-base font-regular">Full-Stack Developer</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm xs:text-base font-regular">Full Stack Developer</p>
         </div>
       </div>
       <div className="flex flex-row items-center">

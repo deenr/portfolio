@@ -17,7 +17,7 @@ export function References({ className }: { className?: string }) {
     {
       author: 'Karel De Smet',
       role: 'Front-end Developer',
-      text: 'As Dean’s mentor, I saw him quickly make an impact by learning fast, asking the right questions, and handling tasks with ease. He’d be a great addition to any team!'
+      text: "As Dean's mentor, I saw him quickly make an impact by learning fast, asking the right questions, and handling tasks with ease. He'd be a great addition to any team!"
     },
     {
       author: 'Vincent Van den Heede',
@@ -40,16 +40,16 @@ export function References({ className }: { className?: string }) {
           </button>
         ))}
       </div>
-      <div className="absolute h-full pt-7 px-7 flex flex-row justify-between"></div>
+      <div className="absolute w-full h-full pt-7 px-7 flex flex-row justify-between"></div>
       <Swiper className="w-full" onSlideChange={({ realIndex }) => setReferenceIndex(realIndex)} onSwiper={setSwiper}>
         {references.map((reference, index) => (
-          <SwiperSlide key={index} className="h-fit pt-[66px] pb-7 px-7">
+          <SwiperSlide key={index} className="!w-full h-fit pt-[66px] pb-7 px-7">
             <p className="text-gray-900 dark:text-white text-lg font-medium">“{reference.text}”</p>
-            <div className="mt-1 flex flex-col text-gray-500 dark:text-gray-300 text-sm">
+            <blockquote className="mt-1 flex flex-col text-gray-500 dark:text-gray-300 text-sm">
               <p className="font-medium">
                 — {reference.author}, <span className="font-normal">{reference.role}</span>
               </p>
-            </div>
+            </blockquote>
           </SwiperSlide>
         ))}
       </Swiper>
