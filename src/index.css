@@ -4,10 +4,11 @@
 
 body {
   max-height: 100vh;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist Mono', 'Geist Mono Fallback';
 
   ::selection {
-    background-color: #e0472a;
+    background-color: rgba(224, 71, 42, 33);
+    opacity: 33%;
     color: #030712;
   }
 }
