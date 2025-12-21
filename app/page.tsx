@@ -37,12 +37,13 @@ export default function Home() {
 
         <section className="flex flex-col gap-4">
           <div className="text-foreground flex flex-col gap-4 text-base leading-relaxed">
-            <p className="inline-flex items-center gap-1.5 flex-wrap">
-              currently working as a software engineer at
+            <p>
+              currently working as a software engineer at{" "}
               <BrandLink 
                 href="https://teamworks.com"
                 icon={<Teamworks className="size-3.5 sm:size-4" />}
                 label="teamworks"
+                className="translate-y-[2.5px]"
               />
             </p>
           </div>

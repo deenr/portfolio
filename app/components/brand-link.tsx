@@ -10,11 +10,11 @@ interface BrandLinkProps {
 
 export function BrandLink({ href, icon, label, className = "", iconColor = "text-foreground" }: BrandLinkProps) {
   const content = (
-    <span className={`inline-flex items-center gap-1 ${className}`}>
+    <span className={`inline-flex items-center gap-1 translate-y-[0.5px] ${className}`}>
       <span className={`relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex items-center justify-start ${iconColor} flex-shrink-0`}>
         {icon}
       </span>
-      <span className="text-base">{label}</span>
+      <span className="text-base group-hover:underline underline-offset-[3px]">{label}</span>
     </span>
   );
 
@@ -24,7 +24,7 @@ export function BrandLink({ href, icon, label, className = "", iconColor = "text
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-foreground hover:underline underline-offset-[3px] transition-colors"
+        className="group hover:text-foreground transition-colors"
       >
         {content}
       </a>
