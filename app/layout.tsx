@@ -15,8 +15,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dean Reymen",
-  description: "Software Engineer",
+  title: {
+    default: "dean reymen",
+    template: "%s | dean reymen",
+  },
+  description: "software engineer",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://deanreymen.be",
+    siteName: "dean reymen",
+    title: "dean reymen",
+    description: "software engineer",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "dean reymen",
+    description: "software engineer",
+  },
 };
 
 export default function RootLayout({

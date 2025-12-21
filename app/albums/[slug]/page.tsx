@@ -16,6 +16,13 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  return {
+    title: slug.toLowerCase(),
+  };
+}
+
 export default async function AlbumPage({ params }: Props) {
   const { slug } = await params;
   const photos = await getPhotos(slug);

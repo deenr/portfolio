@@ -43,7 +43,6 @@ export default function Home() {
                 href="https://teamworks.com"
                 icon={<Teamworks className="size-3.5 sm:size-4" />}
                 label="teamworks"
-                className="translate-y-[2.5px]"
               />
             </p>
           </div>
@@ -112,7 +111,7 @@ export default function Home() {
                 label="uhasselt"
               />
               <span className="text-foreground text-base text-right">
-                masters in electronics and ict
+                master in ict engineering
               </span>
             </div>
           </div>
