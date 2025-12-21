@@ -12,7 +12,7 @@
     "@paper-design/shaders-react": "^0.0.67",
     "framer-motion": "^12.23.26",
     "image-size": "^2.0.2",
-    "next": "16.0.5",
+    "next": "16.1.0",
     "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
