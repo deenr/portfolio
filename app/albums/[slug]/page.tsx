@@ -26,12 +26,12 @@ export default async function AlbumPage({ params }: Props) {
 
   return (
     <>
-      <a
+      {/* <a
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-background focus:px-4 focus:py-2 focus:shadow-md rounded-md text-sm"
         href="#main-content"
       >
         skip to main content
-      </a>
+      </a> */}
       <main
         className="relative mx-auto flex max-w-4xl flex-col gap-8 sm:gap-12 font-mono min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]"
         id="main-content"

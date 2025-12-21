@@ -27,7 +27,7 @@ export function Header() {
         {!isHome && (
           <Link
             href="/"
-            className="hover:text-foreground transition-colors duration-150"
+            className="hover:text-foreground hover:underline underline-offset-[3px] transition-colors text-left cursor-pointer"
           >
             ← back
           </Link>
