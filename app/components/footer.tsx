@@ -19,7 +19,7 @@ export function Footer() {
           github
         </a>
       </div>
-      <span>© 2024 reymen</span>
+      <span>© {new Date().getFullYear()} dean reymen</span>
     </footer>
   );
 }

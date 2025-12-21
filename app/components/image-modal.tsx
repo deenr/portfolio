@@ -30,9 +30,6 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
     };
   }, [onClose, onNext, onPrev]);
 
-  // Use initialPhoto for layoutId so exit animation targets the correct thumbnail
-  const layoutId = `photo-${initialPhoto.src}`;
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -45,25 +42,25 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
       {/* Navigation Buttons */}
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white transition-colors z-50 hidden sm:block rounded-full"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 hidden sm:flex cursor-pointer rounded-full"
+        aria-label="Previous image"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
       
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white transition-colors z-50 hidden sm:block rounded-full"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 hidden sm:flex cursor-pointer rounded-full"
+        aria-label="Next image"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </button>
 
       <div
         className="relative w-full h-full flex flex-col items-center justify-center p-4 sm:p-12"
-        onClick={(e) => e.stopPropagation()}
       >
         <motion.div 
-          layoutId={layoutId}
-          className="relative w-full h-full max-w-7xl max-h-[85vh]"
+          className="relative w-full h-full max-w-7xl max-h-[85vh] cursor-default"
         >
           <Image
             src={photo.src}
@@ -82,7 +79,7 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
           transition={{ duration: 0.2, delay: 0.1 }}
           className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex justify-center pointer-events-none"
         >
-          <div className="px-4 py-2 rounded-full flex gap-4 items-center text-white max-w-[90vw]">
+          <div className="px-4 py-2 rounded-full flex gap-4 items-center text-white max-w-[90vw] pointer-events-auto">
             <p className="font-medium text-sm truncate">
               {photo.location || "Unknown Location"}
             </p>
@@ -94,8 +91,8 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
         </motion.div>
 
         <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-white/50 hover:text-white transition-colors rounded-full"
+          onClick={(e) => { e.stopPropagation(); onClose(); }}
+          className="absolute top-4 right-4 p-6 text-white/50 hover:text-white transition-colors cursor-pointer z-50 rounded-full"
           aria-label="Close"
         >
           <svg

@@ -1,18 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Opteamal } from "./components/opteamal";
+import { Teamworks } from "./components/teamworks";
+import { Verhaert } from "./components/verhaert";
+import { UHasselt } from "./components/uhasselt";
+import { BrandLink } from "./components/brand-link";
 import { Arrow } from "./components/arrow";
 import { Footer } from "./components/footer";
 
 export default function Home() {
   return (
     <>
-      <a
-        className="absolute -top-full left-0 focus:top-4 focus:left-4 z-50 bg-background px-4 py-2 shadow-md rounded-md text-sm transition-all"
-        href="#main-content"
-      >
-        skip to main content
-      </a>
       <main
         className="relative mx-auto flex max-w-2xl flex-col gap-12 sm:gap-16 font-mono min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]"
         id="main-content"
@@ -41,24 +39,11 @@ export default function Home() {
           <div className="text-foreground flex flex-col gap-4 text-base leading-relaxed">
             <p className="inline-flex items-center gap-1.5 flex-wrap">
               currently working as a software engineer at
-              <a
-                className="inline-flex items-center gap-1 hover:text-foreground hover:underline underline-offset-[3px] transition-colors"
+              <BrandLink 
                 href="https://teamworks.com"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="teamworks logo"
-                  loading="lazy"
-                  width="16"
-                  height="16"
-                  decoding="async"
-                  className="rounded-sm"
-                  style={{ color: "transparent" }}
-                  src="https://www.google.com/s2/favicons?domain=teamworks.com&sz=32"
-                />
-                teamworks
-              </a>
+                icon={<Teamworks className="size-3.5 sm:size-4" />}
+                label="teamworks"
+              />
             </p>
           </div>
         </section>
@@ -80,12 +65,12 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group text-foreground hover:text-foreground py-1 transition-colors duration-150 text-base flex items-center justify-between gap-2"
             >
-              <div className="inline-flex items-center gap-1 group-hover:underline underline-offset-[3px]">
-                <div className="relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex items-center justify-start text-primary flex-shrink-0">
-                  <Opteamal className="size-3.5 sm:size-4" />
-                </div>
-                <span className="text-base">opteamal</span>
-              </div>
+              <BrandLink 
+                icon={<Opteamal className="size-3.5 sm:size-4" />}
+                label="opteamal"
+                iconColor="text-primary"
+                className="group-hover:underline underline-offset-[3px]"
+              />
               <span className="text-foreground text-base">
                 frontend developer
               </span>
@@ -96,23 +81,13 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group text-foreground hover:text-foreground py-1 transition-colors duration-150 text-base flex items-center justify-between gap-2"
             >
-              <div className="inline-flex items-center gap-1 group-hover:underline underline-offset-[3px]">
-                <div className="relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex-shrink-0">
-                  <img
-                    alt="Verhaert logo"
-                    loading="lazy"
-                    width="16"
-                    height="16"
-                    decoding="async"
-                    className="rounded-sm"
-                    style={{ color: "transparent" }}
-                    src="https://www.google.com/s2/favicons?domain=verhaert.com&sz=32"
-                  />
-                </div>
-                <span className="text-base">verhaert</span>
-              </div>
+              <BrandLink 
+                icon={<Verhaert className="size-3.5 sm:size-4" />}
+                label="verhaert"
+                className="group-hover:underline underline-offset-[3px]"
+              />
               <span className="text-foreground text-base">
-                frontend developer
+                frontend consultant
               </span>
             </a>
           </div>
@@ -130,21 +105,11 @@ export default function Home() {
           </p>
           <div className="flex flex-col">
             <div className="text-foreground py-1 text-base flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1">
-                <div className="relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex-shrink-0">
-                  <img
-                    alt="Hasselt University logo"
-                    loading="lazy"
-                    width="16"
-                    height="16"
-                    decoding="async"
-                    className="rounded-sm"
-                    style={{ color: "transparent" }}
-                    src="https://www.google.com/s2/favicons?domain=uhasselt.be&sz=32"
-                  />
-                </div>
-                <span className="text-base">hasselt university</span>
-              </div>
+              <BrandLink 
+                href="https://www.uhasselt.be/en"
+                icon={<UHasselt className="size-3.5 sm:size-4" />}
+                label="uhasselt"
+              />
               <span className="text-foreground text-base text-right">
                 masters in electronics and ict
               </span>
