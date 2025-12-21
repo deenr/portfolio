@@ -56,7 +56,7 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
   const albumDir = path.join(publicDir, albumSlug);
   
   // Try to load photo metadata from JSON file
-  let photoMetadata: Array<{ file: string; date: string; location?: string; category: string }> = [];
+  let photoMetadata: Array<{ file: string; date: string; location?: string; category: string; width?: number; height?: number }> = [];
   try {
     const metadataPath = path.join(process.cwd(), "app/lib/photo-data.json");
     const metadataContent = await fs.promises.readFile(metadataPath, "utf-8");
@@ -85,18 +85,24 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
           const stats = await fs.promises.stat(filePath);
           let dimensions = { width: 0, height: 0 };
 
-          try {
-            const buffer = await fs.promises.readFile(filePath);
-            const size = sizeOf(buffer);
-            if (size && size.width && size.height) {
-              dimensions = { width: size.width, height: size.height };
-              // Swap dimensions for rotated images (Orientation 5-8)
-              if (size.orientation && size.orientation >= 5 && size.orientation <= 8) {
-                dimensions = { width: size.height, height: size.width };
+          // Use pre-calculated dimensions if available
+          if (metadata?.width && metadata?.height) {
+            dimensions = { width: metadata.width, height: metadata.height };
+          } else {
+            // Fallback to reading the file only if dimensions are missing
+            try {
+              const buffer = await fs.promises.readFile(filePath);
+              const size = sizeOf(buffer);
+              if (size && size.width && size.height) {
+                dimensions = { width: size.width, height: size.height };
+                // Swap dimensions for rotated images (Orientation 5-8)
+                if (size.orientation && size.orientation >= 5 && size.orientation <= 8) {
+                  dimensions = { width: size.height, height: size.width };
+                }
               }
+            } catch (e) {
+              console.error(`Error getting dimensions for ${file}:`, e);
             }
-          } catch (e) {
-            console.error(`Error getting dimensions for ${file}:`, e);
           }
 
           // Use metadata date or file stats
