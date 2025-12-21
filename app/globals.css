@@ -4,13 +4,19 @@
   --background: #ffffff;
   --foreground: #171717;
   --muted-foreground: #737373;
+  --primary: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@utility unorient {
+  image-orientation: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +24,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --muted-foreground: #a3a3a3;
+    --primary: #C8EF00;
   }
 }
 
@@ -25,12 +32,14 @@
   --background: #0a0a0a;
   --foreground: #ededed;
   --muted-foreground: #a3a3a3;
+  --primary: #C8EF00;
 }
 
 .light {
   --background: #ffffff;
   --foreground: #171717;
   --muted-foreground: #737373;
+  --primary: #000000;
 }
 
 body {

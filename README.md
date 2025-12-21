@@ -39,7 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 3. Optionally add metadata in `app/lib/photo-data.json`:
 
 ```json
-{ "file": "photo.jpg", "date": "1 Jan 2024", "location": "City, Country", "category": "my-album" }
+{ "file": "photo.webp", "date": "1 Jan 2024", "location": "City, Country", "category": "my-album" }
 ```
 
 4. The album will be available at `/albums/my-album`

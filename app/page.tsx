@@ -7,12 +7,12 @@ import { Footer } from "./components/footer";
 export default function Home() {
   return (
     <>
-      {/* <a
+      <a
         className="absolute -top-full left-0 focus:top-4 focus:left-4 z-50 bg-background px-4 py-2 shadow-md rounded-md text-sm transition-all"
         href="#main-content"
       >
         skip to main content
-      </a> */}
+      </a>
       <main
         className="relative mx-auto flex max-w-2xl flex-col gap-12 sm:gap-16 font-mono min-h-[calc(100vh-3rem)] sm:min-h-[calc(100vh-4rem)]"
         id="main-content"
@@ -20,7 +20,7 @@ export default function Home() {
         <header className="flex flex-row items-center gap-3">
           <div className="relative size-10 sm:size-12 flex-shrink-0 overflow-hidden rounded-lg">
             <Image
-              src="/6Zbcm.jpg"
+              src="/6Zbcm.webp"
               alt="Dean Reymen"
               fill
               className="object-cover scale-125"
@@ -31,7 +31,7 @@ export default function Home() {
             <h1 className="font-medium text-base tracking-tight">
               dean reymen
             </h1>
-            <p className="text-[var(--muted-foreground)] text-sm">
+            <p className="text-[var(--muted-foreground)] text-base">
               software engineer
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function Home() {
               className="group text-foreground hover:text-foreground py-1 transition-colors duration-150 text-base flex items-center justify-between gap-2"
             >
               <div className="inline-flex items-center gap-1 group-hover:underline underline-offset-[3px]">
-                <div className="relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex items-center justify-start text-black dark:text-[#C8EF00] flex-shrink-0">
+                <div className="relative size-4 sm:size-5 p-0.5 overflow-hidden rounded-sm flex items-center justify-start text-primary flex-shrink-0">
                   <Opteamal className="size-3.5 sm:size-4" />
                 </div>
                 <span className="text-base">opteamal</span>
