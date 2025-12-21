@@ -1,0 +1,17 @@
+export function Arrow({ className }: { className?: string }) {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807V0.434659H11.8438V9.44034H10.2898V3.0767L2.07102 11.3494Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}

@@ -1,64 +1,61 @@
-# Portfolio
+# Dean Reymen - Portfolio
 
-## 🚀 About This Project
+A minimal, personal portfolio website built with Next.js 16 and Tailwind CSS.
 
-A modern, responsive portfolio website showcasing my journey as a full-stack developer. Built with a focus on clean design, dark/light theme support, and smooth animations. The site features my professional experience, education, toolstack, and ways to connect.
+## Features
 
-## 🛠️ Built With
+- **Dynamic Photo Albums** - Automatically generates album pages from folders in `public/`
+- **Custom Image Modal** - Smooth animations with Framer Motion and shared element transitions
+- **Dark/Light Mode** - Theme toggle with `next-themes`
+- **Responsive Design** - Mobile-first approach with consistent typography
+- **Geist Mono Font** - Clean, monospace typography throughout
 
-- [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) – For building a robust UI with type safety
-- [Vite](https://vitejs.dev) – Next-generation frontend tooling
-- [Tailwind CSS](https://tailwindcss.com) – For utility-first styling
-- [Swiper](https://swiperjs.com) – For smooth reference testimonials
-- [Lucide React](https://lucide.dev) – Beautiful open-source icons
-- [ESLint](https://eslint.org) – For code quality and consistency
+## Tech Stack
 
-## 🚦 Getting Started
+- [Next.js 16](https://nextjs.org/) - React framework with App Router
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [next-themes](https://github.com/pacocoursey/next-themes) - Theme management
 
-### Prerequisites
+## Getting Started
 
-- Node.js (v18 or higher recommended)
+```bash
+# Install dependencies
+npm install
 
-### Installation
+# Run development server
+npm run dev
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/deenr/portfolio.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd portfolio
-   ```
-3. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-4. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+# Build for production
+npm run build
+```
 
-The site will be available at `http://localhost:5173` 🎉
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-## 💻 Development
+## Adding Photo Albums
 
-### Available Scripts
+1. Create a new folder in `public/` (e.g., `public/my-album`)
+2. Add your photos (JPG, PNG, WEBP, GIF supported)
+3. Optionally add metadata in `app/lib/photo-data.json`:
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build for production
-- `npm run lint` - Lint the codebase
-- `npm run preview` - Preview the production build
+```json
+{ "file": "photo.jpg", "date": "1 Jan 2024", "location": "City, Country", "category": "my-album" }
+```
 
-## 🎨 Features
+4. The album will be available at `/albums/my-album`
 
-- Responsive design that works on all devices
-- Dark/light theme with system preference detection
-- Smooth hover animations
-- SEO optimized with meta tags
+## Project Structure
 
-## 📫 Contact
+```
+app/
+├── albums/[slug]/    # Dynamic album pages
+├── components/       # Reusable components
+├── lib/              # Utilities and data
+└── page.tsx          # Homepage
+public/
+└── [album-name]/     # Photo albums
+```
 
-- **X**: [@deanreymen](https://x.com/deanreymen)
-- **LinkedIn**: [/in/dean-reymen](https://linkedin.com/in/dean-reymen)
+## License
 
-Let's connect and build something great together! 🌍✨
+MIT
