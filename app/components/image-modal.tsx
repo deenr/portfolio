@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, useMotionValue, useTransform } from "framer-motion";
 import type { Photo } from "../lib/photos";
 
 type ImageModalProps = {
@@ -15,17 +15,66 @@ type ImageModalProps = {
 
 export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPrev }: ImageModalProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const controls = useAnimation();
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Motion values for zoom and pan
+  const scale = useMotionValue(1);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Background opacity based on swipe down
+  const opacity = useTransform(y, [0, 300], [1, 0.4]);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
-  }, [photo.src]);
+    setShowSpinner(false);
+    
+    // Reset motion values on photo change
+    scale.set(1);
+    x.set(0);
+    y.set(0);
+    setIsZoomed(false);
+
+    // Add a small delay before showing the spinner to prevent flickering
+    // Only show if it's still loading after 400ms
+    const timer = setTimeout(() => {
+      setIsLoading(prev => {
+        if (prev) setShowSpinner(true);
+        return prev;
+      });
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [photo.src, scale, x, y]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setShowSpinner(false);
+    }
+  }, [isLoading]);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") onNext();
-      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") {
+        if (scale.get() === 1) onNext();
+      }
+      if (e.key === "ArrowLeft") {
+        if (scale.get() === 1) onPrev();
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -33,11 +82,70 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
       document.body.style.overflow = "unset";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, onNext, onPrev]);
+  }, [onClose, onNext, onPrev, scale]);
 
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
+  const handleDragEnd = (e: any, info: any) => {
+    const currentScale = scale.get();
+    
+    if (currentScale === 1) {
+      // Swipe down to close
+      if (info.offset.y > 150) {
+        onClose();
+        return;
+      }
+
+      // Horizontal swipe
+      const swipeConfidenceThreshold = 10000;
+      const swipePower = Math.abs(info.offset.x) * info.velocity.x;
+
+      if (swipePower < -swipeConfidenceThreshold) {
+        onNext();
+      } else if (swipePower > swipeConfidenceThreshold) {
+        onPrev();
+      } else {
+        // Reset position if swipe wasn't strong enough
+        controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 300, damping: 30 } });
+      }
+    } else {
+      // When zoomed in, we use standard drag behavior with constraints (handled by framer motion)
+      // We could add more logic here to handle edge snapping if needed
+    }
+  };
+
+  const touchStartDist = useRef<number | null>(null);
+  const initialScale = useRef(1);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].pageX - e.touches[1].pageX,
+        e.touches[0].pageY - e.touches[1].pageY
+      );
+      touchStartDist.current = dist;
+      initialScale.current = scale.get();
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && touchStartDist.current !== null) {
+      const dist = Math.hypot(
+        e.touches[0].pageX - e.touches[1].pageX,
+        e.touches[0].pageY - e.touches[1].pageY
+      );
+      const newScale = Math.max(1, Math.min(initialScale.current * (dist / touchStartDist.current), 4));
+      scale.set(newScale);
+      setIsZoomed(newScale > 1.05);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartDist.current = null;
+    if (scale.get() < 1.05) {
+      scale.set(1);
+      setIsZoomed(false);
+      x.set(0);
+      y.set(0);
+    }
   };
 
   return (
@@ -46,12 +154,13 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md"
+      style={{ opacity }}
       onClick={onClose}
     >
       {/* Loading Indicator */}
       <AnimatePresence>
-        {isLoading && (
+        {showSpinner && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -62,77 +171,103 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Navigation Buttons */}
-      <button
-        onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 hidden sm:flex cursor-pointer rounded-full"
-        aria-label="Previous image"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      
-      <button
-        onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 hidden sm:flex cursor-pointer rounded-full"
-        aria-label="Next image"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
+
+      {/* Navigation Buttons - Hidden when zoomed */}
+      <AnimatePresence>
+        {scale.get() === 1 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="hidden sm:block"
+          >
+            <button
+              onClick={(e) => { e.stopPropagation(); onPrev(); }}
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 flex cursor-pointer rounded-full"
+              aria-label="Previous image"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            
+            <button
+              onClick={(e) => { e.stopPropagation(); onNext(); }}
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 flex cursor-pointer rounded-full"
+              aria-label="Next image"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div
-        className="relative w-full h-full flex flex-col items-center justify-center p-4 sm:p-12"
+        ref={containerRef}
+        className="relative w-full h-full flex flex-col items-center justify-center p-0 sm:p-12 overflow-hidden"
       >
         <motion.div 
-          className="relative w-full h-full max-w-7xl max-h-[85vh] cursor-default"
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
-
-            if (swipe < -swipeConfidenceThreshold) {
-              onNext();
-            } else if (swipe > swipeConfidenceThreshold) {
-              onPrev();
-            }
+          animate={controls}
+          style={{ scale, x, y, touchAction: "none" }}
+          className="relative w-full h-full max-w-7xl max-h-[90vh] cursor-default flex items-center justify-center"
+          drag={isMobile || isZoomed}
+          dragConstraints={isZoomed ? undefined : { left: 0, right: 0, top: 0, bottom: 0 }}
+          dragElastic={isZoomed ? 0 : 0.5}
+          onDragEnd={handleDragEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onClick={(e) => {
+            e.stopPropagation();
           }}
         >
-          <Image
-            src={photo.src}
-            alt={photo.alt || ""}
-            fill
-            className="object-contain unorient"
-            quality={100}
-            priority
-            onLoad={() => setIsLoading(false)}
-          />
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          key={photo.src}
-          transition={{ duration: 0.2, delay: 0.1 }}
-          className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex flex-col items-center pointer-events-none gap-2"
-        >
-          <div className="px-4 py-2 rounded-full flex gap-4 items-center text-white max-w-[90vw] pointer-events-auto">
-            {photo.description && (<><p className="font-medium text-sm truncate">
-              {photo.description}
-            </p>
-            <span className="w-1 h-1 bg-white/50 rounded-full" /></>)}
-            <p className="font-medium text-sm truncate">
-              {photo.location || "Unknown Location"}
-            </p>
-            <span className="w-1 h-1 bg-white/50 rounded-full" />
-            <p className="font-mono text-xs whitespace-nowrap">
-              {photo.date}
-            </p>
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Image
+              src={photo.src}
+              alt={photo.alt || ""}
+              fill
+              className="object-contain unorient transition-transform duration-200"
+              quality={100}
+              priority
+              onLoad={() => setIsLoading(false)}
+              draggable={false}
+            />
           </div>
         </motion.div>
+        
+        {/* Metadata - Hidden when zoomed */}
+        <AnimatePresence>
+          {scale.get() === 1 && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              key={photo.src}
+              transition={{ duration: 0.2, delay: 0.1 }}
+              className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex flex-col items-center pointer-events-none gap-2 z-50"
+            >
+              <div className="px-4 py-2 rounded-full flex gap-4 items-center text-white max-w-[90vw] pointer-events-auto bg-black/20 backdrop-blur-sm shadow-lg border border-white/5">
+                {photo.description && (
+                  <>
+                    <p className="font-medium text-sm truncate">
+                      {photo.description}
+                    </p>
+                    <span className="w-1 h-1 bg-white/50 rounded-full flex-shrink-0" />
+                  </>
+                )}
+                <p className="font-medium text-sm truncate">
+                  {photo.location || "Unknown Location"}
+                </p>
+                <span className="w-1 h-1 bg-white/50 rounded-full flex-shrink-0" />
+                <p className="font-mono text-xs whitespace-nowrap">
+                  {photo.date}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <button
           onClick={(e) => { e.stopPropagation(); onClose(); }}
-          className="absolute top-4 right-4 p-6 text-white/50 hover:text-white transition-colors cursor-pointer z-50 rounded-full"
+          className="absolute top-4 right-4 p-4 text-white/50 hover:text-white transition-colors cursor-pointer z-[60] rounded-full sm:bg-transparent"
           aria-label="Close"
         >
           <svg
