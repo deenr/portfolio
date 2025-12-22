@@ -88,27 +88,10 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
     const currentScale = scale.get();
     
     if (currentScale === 1) {
-      // Swipe down to close
-      if (info.offset.y > 150) {
-        onClose();
-        return;
-      }
-
-      // Horizontal swipe
-      const swipeConfidenceThreshold = 10000;
-      const swipePower = Math.abs(info.offset.x) * info.velocity.x;
-
-      if (swipePower < -swipeConfidenceThreshold) {
-        onNext();
-      } else if (swipePower > swipeConfidenceThreshold) {
-        onPrev();
-      } else {
-        // Reset position if swipe wasn't strong enough
-        controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 300, damping: 30 } });
-      }
+      // Swipe functionality removed as requested
+      // controls.start({ x: 0, y: 0, transition: { type: "spring", stiffness: 300, damping: 30 } });
     } else {
       // When zoomed in, we use standard drag behavior with constraints (handled by framer motion)
-      // We could add more logic here to handle edge snapping if needed
     }
   };
 
@@ -172,31 +155,36 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
         )}
       </AnimatePresence>
 
-      {/* Navigation Buttons - Hidden when zoomed */}
+      {/* Navigation Buttons */}
       <AnimatePresence>
         {scale.get() === 1 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="hidden sm:block"
-          >
-            <button
+          <>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={(e) => { e.stopPropagation(); onPrev(); }}
-              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 flex cursor-pointer rounded-full"
+              className="absolute left-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-start pl-4 sm:pl-8 cursor-pointer"
               aria-label="Previous image"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
+              <div className="p-4 rounded-full bg-black/10 sm:bg-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </div>
+            </motion.button>
             
-            <button
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-8 text-white/50 hover:text-white transition-colors z-50 flex cursor-pointer rounded-full"
+              className="absolute right-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-end pr-4 sm:pr-8 cursor-pointer"
               aria-label="Next image"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-          </motion.div>
+              <div className="p-4 rounded-full bg-black/10 sm:bg-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </div>
+            </motion.button>
+          </>
         )}
       </AnimatePresence>
 
@@ -208,7 +196,7 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
           animate={controls}
           style={{ scale, x, y, touchAction: "none" }}
           className="relative w-full h-full max-w-7xl max-h-[90vh] cursor-default flex items-center justify-center"
-          drag={isMobile || isZoomed}
+          drag={isZoomed}
           dragConstraints={isZoomed ? undefined : { left: 0, right: 0, top: 0, bottom: 0 }}
           dragElastic={isZoomed ? 0 : 0.5}
           onDragEnd={handleDragEnd}
