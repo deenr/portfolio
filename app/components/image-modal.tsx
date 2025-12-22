@@ -164,10 +164,10 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={(e) => { e.stopPropagation(); onPrev(); }}
-              className="absolute left-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-start pl-4 sm:pl-8 cursor-pointer"
+              className="absolute left-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-start sm:pl-8 cursor-pointer"
               aria-label="Previous image"
             >
-              <div className="p-4 rounded-full bg-black/10 sm:bg-transparent">
+              <div className="p-4 rounded-full sm:bg-transparent">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               </div>
             </motion.button>
@@ -177,10 +177,10 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-end pr-4 sm:pr-8 cursor-pointer"
+              className="absolute right-0 top-0 bottom-0 w-1/4 sm:w-auto sm:px-8 text-white/50 hover:text-white transition-colors z-50 flex items-center justify-end sm:pr-8 cursor-pointer"
               aria-label="Next image"
             >
-              <div className="p-4 rounded-full bg-black/10 sm:bg-transparent">
+              <div className="p-4 rounded-full sm:bg-transparent">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </div>
             </motion.button>
