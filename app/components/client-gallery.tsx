@@ -58,7 +58,6 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
               };
 
               const randomValue = getSeededRandom(photo.src);
-              console.log(randomValue)
               let displayWidth = photo.width;
               let displayHeight = photo.height;
               
