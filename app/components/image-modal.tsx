@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import type { Photo } from "../lib/photos";
 
 type ImageModalProps = {
@@ -14,6 +14,11 @@ type ImageModalProps = {
 };
 
 export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPrev }: ImageModalProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, [photo.src]);
   useEffect(() => {
     document.body.style.overflow = "hidden";
     
@@ -30,6 +35,11 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
     };
   }, [onClose, onNext, onPrev]);
 
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -39,6 +49,19 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 backdrop-blur-sm"
       onClick={onClose}
     >
+      {/* Loading Indicator */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 flex items-center justify-center z-[60] pointer-events-none"
+          >
+            <div className="w-8 h-8 border-2 border-white/20 border-t-white/80 rounded-full animate-spin" />
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Navigation Buttons */}
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
@@ -61,6 +84,18 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
       >
         <motion.div 
           className="relative w-full h-full max-w-7xl max-h-[85vh] cursor-default"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = swipePower(offset.x, velocity.x);
+
+            if (swipe < -swipeConfidenceThreshold) {
+              onNext();
+            } else if (swipe > swipeConfidenceThreshold) {
+              onPrev();
+            }
+          }}
         >
           <Image
             src={photo.src}
@@ -69,6 +104,7 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
             className="object-contain unorient"
             quality={100}
             priority
+            onLoad={() => setIsLoading(false)}
           />
         </motion.div>
         
