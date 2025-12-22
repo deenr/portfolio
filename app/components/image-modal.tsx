@@ -77,9 +77,13 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
           animate={{ opacity: 1, y: 0 }}
           key={photo.src}
           transition={{ duration: 0.2, delay: 0.1 }}
-          className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex justify-center pointer-events-none"
+          className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex flex-col items-center pointer-events-none gap-2"
         >
           <div className="px-4 py-2 rounded-full flex gap-4 items-center text-white max-w-[90vw] pointer-events-auto">
+            {photo.description && (<><p className="font-medium text-sm truncate">
+              {photo.description}
+            </p>
+            <span className="w-1 h-1 bg-white/50 rounded-full" /></>)}
             <p className="font-medium text-sm truncate">
               {photo.location || "Unknown Location"}
             </p>

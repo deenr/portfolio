@@ -9,6 +9,7 @@ export type Photo = {
   location?: string;
   width: number;
   height: number;
+  description?: string;
 };
 
 export type Album = {
@@ -56,7 +57,7 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
   const albumDir = path.join(publicDir, albumSlug);
   
   // Try to load photo metadata from JSON file
-  let photoMetadata: Array<{ file: string; date: string; location?: string; category: string; width?: number; height?: number }> = [];
+  let photoMetadata: Array<{ file: string; date: string; location?: string; category: string; width?: number; height?: number; description?: string }> = [];
   try {
     const metadataPath = path.join(process.cwd(), "app/lib/photo-data.json");
     const metadataContent = await fs.promises.readFile(metadataPath, "utf-8");
@@ -127,6 +128,7 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
             alt: file,
             date: dateStr,
             location: metadata?.location,
+            description: metadata?.description,
             timestamp,
             ...dimensions,
           };
@@ -142,13 +144,14 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
 
     return validPhotos
       .sort((a, b) => b.timestamp - a.timestamp)
-      .map(({ src, alt, date, location, width, height }) => ({ 
+      .map(({ src, alt, date, location, width, height, description }) => ({ 
         src, 
         alt, 
         date: date || "", 
         location, 
         width, 
-        height 
+        height,
+        description
       }));
       
   } catch (error) {

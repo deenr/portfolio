@@ -45,6 +45,31 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
           <div key={colIndex} className="flex flex-col gap-4 flex-1">
             {column.map((photo) => {
               const photoIndex = photos.indexOf(photo);
+              
+              // Seeded random for deterministic random heights
+              const getSeededRandom = (seed: string) => {
+                let hash = 0;
+                for (let i = 0; i < seed.length; i++) {
+                  hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+                  hash |= 0;
+                }
+                const rand = (Math.abs(hash) % 1000) / 1000;
+                return rand;
+              };
+
+              const randomValue = getSeededRandom(photo.src);
+              console.log(randomValue)
+              let displayWidth = photo.width;
+              let displayHeight = photo.height;
+              
+              if (photo.height > photo.width) {
+                // Vertical: between height and 2/3 height
+                displayHeight = photo.height * (1 - (randomValue * 0.2));
+              } else {
+                // Horizontal: between height and 4/3 height
+                displayHeight = photo.height * (1 + (randomValue * .5));
+              }
+
               return (
                 <motion.div
                   key={photo.src}
@@ -52,7 +77,7 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
                   className="relative overflow-hidden rounded-sm group cursor-pointer w-full"
                   onClick={() => handleOpen(photoIndex)}
                 >
-                  <div style={{ aspectRatio: `${photo.width} / ${photo.height}` }} className="relative w-full">
+                  <div style={{ aspectRatio: `${displayWidth} / ${displayHeight}` }} className="relative w-full">
                     <Image
                       src={photo.src}
                       alt={photo.alt || ""}
