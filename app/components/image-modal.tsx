@@ -213,8 +213,9 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
               alt={photo.alt || ""}
               fill
               className="object-contain unorient transition-transform duration-200"
-              quality={100}
+              quality={90}
               priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
               onLoad={() => setIsLoading(false)}
               draggable={false}
             />
