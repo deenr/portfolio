@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ImageModal from "./image-modal";
@@ -10,6 +10,8 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState(-1);
   const initialIndexRef = useRef(-1);
   const [columnCount, setColumnCount] = useState(2);
+  const [focusedIndex, setFocusedIndex] = useState(0);
+  const photoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleOpen = (i: number) => {
     initialIndexRef.current = i;
@@ -20,6 +22,26 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
     setIndex(-1);
     initialIndexRef.current = -1;
   };
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent, photoIndex: number) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleOpen(photoIndex);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        const nextIndex = Math.min(photoIndex + 1, photos.length - 1);
+        setFocusedIndex(nextIndex);
+        photoRefs.current[nextIndex]?.focus();
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const prevIndex = Math.max(photoIndex - 1, 0);
+        setFocusedIndex(prevIndex);
+        photoRefs.current[prevIndex]?.focus();
+      }
+    },
+    [photos.length]
+  );
 
   useEffect(() => {
     const updateColumns = () => {
@@ -40,9 +62,9 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="flex gap-4 items-start">
+      <div className="flex gap-4 items-start" role="grid" aria-label="Photo gallery">
         {columns.map((column, colIndex) => (
-          <div key={colIndex} className="flex flex-col gap-4 flex-1">
+          <div key={colIndex} className="flex flex-col gap-4 flex-1" role="row">
             {column.map((photo) => {
               const photoIndex = photos.indexOf(photo);
               
@@ -72,9 +94,17 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
               return (
                 <motion.div
                   key={photo.src}
+                  ref={(el) => {
+                    photoRefs.current[photoIndex] = el;
+                  }}
                   layoutId={`photo-${photo.src}`}
-                  className="relative overflow-hidden rounded-sm group cursor-pointer w-full"
+                  className="relative overflow-hidden rounded-sm group cursor-pointer w-full focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-black"
                   onClick={() => handleOpen(photoIndex)}
+                  onKeyDown={(e) => handleKeyDown(e, photoIndex)}
+                  tabIndex={photoIndex === 0 ? 0 : -1}
+                  role="gridcell"
+                  aria-label={`Photo ${photoIndex + 1} of ${photos.length}${photo.alt ? `: ${photo.alt}` : ""}`}
+                  onFocus={() => setFocusedIndex(photoIndex)}
                 >
                   <div style={{ aspectRatio: `${displayWidth} / ${displayHeight}` }} className="relative w-full">
                     <Image
