@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Run image optimization
+echo "🖼️  Optimizing images..."
+node optimize.mjs
+
+# Check if optimization was successful
+if [ $? -ne 0 ]; then
+  echo "❌ Image optimization failed. Commit aborted."
+  exit 1
+fi
+
+# Add the generated optimized images and manifest to the commit
+git add public/images/optimized public/images/manifest.json
+
+echo "✅ Images optimized and staged for commit"

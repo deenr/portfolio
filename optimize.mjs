@@ -5,7 +5,7 @@ import sharp from 'sharp';
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const publicDir = path.join(__dirname, 'public');
 const imagesDir = path.join(publicDir, 'images');
-const rawDir = path.join(imagesDir, 'raw');
+const rawDir = path.join(__dirname, 'raw-images'); // Raw images at project root (not in public)
 const optimizedDir = path.join(imagesDir, 'optimized');
 const imagesJsonPath = path.join(publicDir, 'images.json');
 const manifestJsonPath = path.join(imagesDir, 'manifest.json');
@@ -58,7 +58,7 @@ async function optimizeImages() {
       // Process each image in this album
       for (const imageData of images) {
         const { filename } = imageData;
-        const rawPath = path.join(rawDir, filename);
+        const rawPath = path.join(rawDir, albumSlug, filename); // Raw images organized by album
         const optimizedFilename = filename.replace(/\.(jpe?g|png|tiff?)$/i, '.webp');
         const optimizedPath = path.join(albumOptimizedDir, optimizedFilename);
         

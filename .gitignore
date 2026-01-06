@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# generated images (built from raw images via optimize.mjs)
-/public/images/optimized
-/public/images/manifest.json
+# raw source images (too large for git, optimized images are generated on commit)
+/raw-images
