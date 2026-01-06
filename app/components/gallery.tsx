@@ -7,6 +7,9 @@ type Photo = {
   src: string;
   alt: string;
   date: string;
+  blurDataURL?: string;
+  blurWidth?: number;
+  blurHeight?: number;
 };
 
 export function Gallery({ photos }: { photos: Photo[] }) {
@@ -21,12 +24,15 @@ export function Gallery({ photos }: { photos: Photo[] }) {
             className="relative flex-shrink-0 w-64 aspect-[2/3] snap-center cursor-pointer group overflow-hidden rounded-sm"
             onClick={() => setSelectedPhoto(photo)}
           >
-            <Image
+            <img
               src={photo.src}
               alt={photo.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, 256px"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{
+                filter: photo.blurDataURL ? 'blur(20px)' : 'none',
+                background: photo.blurDataURL ? `no-repeat center/cover url(${photo.blurDataURL})` : 'none'
+              }}
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
           </div>
@@ -40,12 +46,11 @@ export function Gallery({ photos }: { photos: Photo[] }) {
         >
           <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
             <div className="relative w-full h-[80vh]">
-              <Image
+              <img
                 src={selectedPhoto.src}
                 alt={selectedPhoto.alt}
-                fill
-                className="object-contain"
-                quality={100}
+                className="w-full h-full object-contain"
+                loading="eager"
               />
             </div>
             <p className="text-white/80 font-mono mt-4 text-sm">

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated images (built from raw images via optimize.mjs)
+/public/images/optimized
+/public/images/manifest.json

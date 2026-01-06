@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import sizeOf from "image-size";
 
 export type Photo = {
   src: string;
@@ -10,6 +9,9 @@ export type Photo = {
   width: number;
   height: number;
   description?: string;
+  blurDataURL?: string;
+  blurWidth?: number;
+  blurHeight?: number;
 };
 
 export type Album = {
@@ -23,12 +25,65 @@ export type Album = {
 export async function getAlbums(): Promise<Album[]> {
   const publicDir = path.join(process.cwd(), "public");
   
+  // Check if we have the new images system
+  const imagesJsonPath = path.join(publicDir, "images.json");
+  if (fs.existsSync(imagesJsonPath)) {
+    // New system: return albums from images.json
+    try {
+      const imagesConfig = JSON.parse(fs.readFileSync(imagesJsonPath, "utf-8"));
+      const albums = imagesConfig.albums;
+      
+      if (!albums) {
+        console.error("No albums found in images.json");
+        return [];
+      }
+      
+      // Try to load optimization manifest for cover images
+      const manifestPath = path.join(publicDir, "images", "manifest.json");
+      let manifest: any = null;
+      if (fs.existsSync(manifestPath)) {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+      }
+      
+      return Object.entries(albums).map(([albumSlug, albumImages]) => {
+        const images = albumImages as any[];
+        
+        // Get first image for cover, or use placeholder
+        let coverImage = "/images/optimized/placeholder.webp";
+        
+        if (images.length > 0) {
+          const firstImage = images[0];
+          const filename = firstImage.filename;
+          const optimizedFilename = filename.replace(/\.(jpe?g|png|tiff?)$/i, '.webp');
+          
+          // Use manifest if available, otherwise use predictable path
+          if (manifest && manifest.albums && manifest.albums[albumSlug] && manifest.albums[albumSlug][filename]) {
+            coverImage = manifest.albums[albumSlug][filename].src;
+          } else {
+            coverImage = `/images/optimized/${albumSlug}/${optimizedFilename}`;
+          }
+        }
+        
+        return {
+          slug: albumSlug,
+          name: albumSlug.charAt(0).toUpperCase() + albumSlug.slice(1), // Capitalize first letter
+          coverImage,
+          photoCount: images.length,
+        };
+      });
+    } catch (error) {
+      console.error("Error reading images.json:", error);
+      return [];
+    }
+  }
+  
+  // Fallback to old system (scan directories)
   try {
     const entries = await fs.promises.readdir(publicDir, { withFileTypes: true });
     const albums: Album[] = [];
     
     for (const entry of entries) {
-      if (entry.isDirectory()) {
+      if (entry.isDirectory() && entry.name !== "images") {
         const albumPath = path.join(publicDir, entry.name);
         const files = await fs.promises.readdir(albumPath);
         const imageFiles = files.filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f));
@@ -51,17 +106,87 @@ export async function getAlbums(): Promise<Album[]> {
   }
 }
 
-// Get photos for a specific album
+// Get photos using the new optimization system
 export async function getPhotos(albumSlug: string): Promise<Photo[]> {
   const publicDir = path.join(process.cwd(), "public");
+  const imagesJsonPath = path.join(publicDir, "images.json");
+  const manifestPath = path.join(publicDir, "images", "manifest.json");
+  
+  // If we're using the new system
+  if (fs.existsSync(imagesJsonPath)) {
+    try {
+      const imagesConfig = JSON.parse(fs.readFileSync(imagesJsonPath, "utf-8"));
+      const albums = imagesConfig.albums;
+      
+      if (!albums || !albums[albumSlug]) {
+        console.error(`Album "${albumSlug}" not found in images.json`);
+        return [];
+      }
+      
+      const albumImages = albums[albumSlug] as any[];
+      
+      // Try to load optimization manifest
+      let manifest: any = null;
+      if (fs.existsSync(manifestPath)) {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+      }
+      
+      const photos = albumImages.map((imageData: any) => {
+        const { filename, date, title, description, location } = imageData;
+        const optimizedFilename = filename.replace(/\.(jpe?g|png|tiff?)$/i, '.webp');
+        
+        // Default values (fallback)
+        let photo: Photo = {
+          src: `/images/optimized/${albumSlug}/${optimizedFilename}`,
+          alt: title || filename,
+          date: date || "",
+          location: location || title || "",
+          description: description || "",
+          width: 1920, // Default width
+          height: 1280, // Default height
+        };
+        
+        // If we have optimization data for this album, use it
+        if (manifest && manifest.albums && manifest.albums[albumSlug] && manifest.albums[albumSlug][filename]) {
+          const optimizedData = manifest.albums[albumSlug][filename];
+          photo = {
+            ...photo,
+            src: optimizedData.src,
+            width: optimizedData.width,
+            height: optimizedData.height,
+            blurDataURL: optimizedData.blurDataURL,
+            blurWidth: optimizedData.blurWidth,
+            blurHeight: optimizedData.blurHeight,
+          };
+        }
+        
+        return photo;
+      });
+      
+      // Sort by date (newest first)
+      return photos.sort((a: Photo, b: Photo) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB.getTime() - dateA.getTime();
+      });
+      
+    } catch (error) {
+      console.error("Error reading photos from new system:", error);
+      return [];
+    }
+  }
+  
+  // Fallback to old system (for backward compatibility)
   const albumDir = path.join(publicDir, albumSlug);
   
   // Try to load photo metadata from JSON file
   let photoMetadata: Array<{ file: string; date: string; location?: string; category: string; width?: number; height?: number; description?: string }> = [];
   try {
     const metadataPath = path.join(process.cwd(), "app/lib/photo-data.json");
-    const metadataContent = await fs.promises.readFile(metadataPath, "utf-8");
-    photoMetadata = JSON.parse(metadataContent);
+    if (fs.existsSync(metadataPath)) {
+      const metadataContent = await fs.promises.readFile(metadataPath, "utf-8");
+      photoMetadata = JSON.parse(metadataContent);
+    }
   } catch {
     // No metadata file, will use file stats instead
   }
@@ -84,27 +209,6 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
         
         try {
           const stats = await fs.promises.stat(filePath);
-          let dimensions = { width: 0, height: 0 };
-
-          // Use pre-calculated dimensions if available
-          if (metadata?.width && metadata?.height) {
-            dimensions = { width: metadata.width, height: metadata.height };
-          } else {
-            // Fallback to reading the file only if dimensions are missing
-            try {
-              const buffer = await fs.promises.readFile(filePath);
-              const size = sizeOf(buffer);
-              if (size && size.width && size.height) {
-                dimensions = { width: size.width, height: size.height };
-                // Swap dimensions for rotated images (Orientation 5-8)
-                if (size.orientation && size.orientation >= 5 && size.orientation <= 8) {
-                  dimensions = { width: size.height, height: size.width };
-                }
-              }
-            } catch (e) {
-              console.error(`Error getting dimensions for ${file}:`, e);
-            }
-          }
 
           // Use metadata date or file stats
           let timestamp = stats.mtime.getTime();
@@ -130,7 +234,8 @@ export async function getPhotos(albumSlug: string): Promise<Photo[]> {
             location: metadata?.location,
             description: metadata?.description,
             timestamp,
-            ...dimensions,
+            width: metadata?.width || 1920,
+            height: metadata?.height || 1080,
           };
         } catch (err) {
           console.warn(`Photo not found: ${filePath}`);

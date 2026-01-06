@@ -82,9 +82,10 @@ export default function ClientGallery({ photos }: { photos: Photo[] }) {
                       alt={photo.alt || ""}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      quality={75}
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+
+                      placeholder={photo.blurDataURL ? "blur" : "empty"}
+                      blurDataURL={photo.blurDataURL}
+
                     />
                   </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end p-4 opacity-0 group-hover:opacity-100">

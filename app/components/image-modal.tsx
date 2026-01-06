@@ -208,16 +208,26 @@ export default function ImageModal({ photo, initialPhoto, onClose, onNext, onPre
           }}
         >
           <div className="relative w-full h-full flex items-center justify-center">
+            {/* Blur placeholder background - visible until image loads */}
+            {photo.blurDataURL && isLoading && (
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ 
+                  backgroundImage: `url(${photo.blurDataURL})`,
+                  filter: 'blur(20px)',
+                  transform: 'scale(1.1)', // Prevent blur edges from showing
+                }}
+              />
+            )}
+            {/* Full quality image */}
             <Image
               src={photo.src}
               alt={photo.alt || ""}
               fill
-              className="object-contain unorient transition-transform duration-200"
-              quality={90}
-              priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
+              className={`object-contain ${isLoading ? 'opacity-0' : 'opacity-100'}`}
               onLoad={() => setIsLoading(false)}
               draggable={false}
+              priority
             />
           </div>
         </motion.div>
