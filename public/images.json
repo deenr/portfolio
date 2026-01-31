@@ -2,25 +2,11 @@
   "albums": {
     "fujifilm": [
       {
-        "filename": "DSCF1656.jpg",
-        "date": "2 Dec 2022",
-        "title": "Tbilisi, Georgia",
-        "description": "",
-        "location": "Tbilisi, Georgia"
-      },
-      {
         "filename": "DSCF1657.jpg",
         "date": "2 Dec 2022",
         "title": "Tbilisi, Georgia",
         "description": "",
         "location": "Tbilisi, Georgia"
-      },
-      {
-        "filename": "DSCF1837.jpg",
-        "date": "16 Dec 2022",
-        "title": "Batumi, Georgia",
-        "description": "",
-        "location": "Batumi, Georgia"
       },
       {
         "filename": "DSCF1840.jpg",
@@ -72,13 +58,6 @@
         "location": "Moscow, Russia"
       },
       {
-        "filename": "DSCF2542.jpg",
-        "date": "6 May 2023",
-        "title": "Moscow, Russia",
-        "description": "",
-        "location": "Moscow, Russia"
-      },
-      {
         "filename": "DSCF2543.jpg",
         "date": "6 May 2023",
         "title": "Moscow, Russia",
@@ -93,21 +72,7 @@
         "location": "Moscow, Russia"
       },
       {
-        "filename": "DSCF2635.jpg",
-        "date": "9 May 2023",
-        "title": "Moscow, Russia",
-        "description": "",
-        "location": "Moscow, Russia"
-      },
-      {
         "filename": "DSCF2636.jpg",
-        "date": "9 May 2023",
-        "title": "Moscow, Russia",
-        "description": "",
-        "location": "Moscow, Russia"
-      },
-      {
-        "filename": "DSCF2637.jpg",
         "date": "9 May 2023",
         "title": "Moscow, Russia",
         "description": "",
@@ -116,13 +81,6 @@
       {
         "filename": "DSCF2787.jpg",
         "date": "12 May 2023",
-        "title": "Moscow, Russia",
-        "description": "",
-        "location": "Moscow, Russia"
-      },
-      {
-        "filename": "DSCF3959.jpg",
-        "date": "18 May 2023",
         "title": "Moscow, Russia",
         "description": "",
         "location": "Moscow, Russia"
@@ -163,13 +121,6 @@
         "location": "Ivanovo, Russia"
       },
       {
-        "filename": "DSCF4828.jpg",
-        "date": "10 May 2024",
-        "title": "Plyos, Russia",
-        "description": "",
-        "location": "Plyos, Russia"
-      },
-      {
         "filename": "DSCF4886.jpg",
         "date": "10 May 2024",
         "title": "Plyos, Russia",
@@ -185,13 +136,6 @@
       },
       {
         "filename": "DSCF4990.jpg",
-        "date": "3 Jul 2024",
-        "title": "Bangkok, Thailand",
-        "description": "",
-        "location": "Bangkok, Thailand"
-      },
-      {
-        "filename": "DSCF5002.jpg",
         "date": "3 Jul 2024",
         "title": "Bangkok, Thailand",
         "description": "",
@@ -266,20 +210,6 @@
         "title": "Palizzi Marina, Italy",
         "description": "",
         "location": "Palizzi Marina, Italy"
-      },
-      {
-        "filename": "DSCF5720.jpg",
-        "date": "19 Apr 2025",
-        "title": "Palizzi Marina, Italy",
-        "description": "",
-        "location": "Palizzi Marina, Italy"
-      },
-      {
-        "filename": "DSCF5982.jpg",
-        "date": "19 Aug 2025",
-        "title": "Sivas, Greece",
-        "description": "",
-        "location": "Sivas, Greece"
       },
       {
         "filename": "DSCF5986.jpg",

@@ -1,28 +1,12 @@
 {
-  "generated": "2026-01-06T17:51:38.129Z",
+  "generated": "2026-01-31T21:26:57.744Z",
   "albums": {
     "fujifilm": {
-      "DSCF1656.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF1656.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoUAA0APtFUo0uoJKMhsAgBABoJYwAAXlvO93Com20kWAD+9301ebxrj8To6wk377TqVYxVJ48UVTvM2huUrq7pD3lCb3n9CfFDj5d02ofvz1jPpinVgAAI4oAogAAA",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
       "DSCF1657.jpg": {
         "src": "/images/optimized/fujifilm/DSCF1657.webp",
         "width": 1920,
         "height": 1280,
         "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZQAAW+kPlIo2awZpuAAA/vWV2utw6M7mDoRvN7WMyYQEG3pCOl7d/Lp9s/wWyeDFDPiQAAA=",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
-      "DSCF1837.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF1837.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoUAA0APtFWo0uoJKMhsAgBABoJZgCdMoADTeym5q7PqZmwAP3MHHtB3l/vIvjsouNkqvoD122bxaj0YzE1jwuuHT82TogqzNXxFNcsNeBIW5mrV+PYB9/rIAA=",
         "blurWidth": 20,
         "blurHeight": 13
       },
@@ -82,14 +66,6 @@
         "blurWidth": 20,
         "blurHeight": 13
       },
-      "DSCF2542.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF2542.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwAwCdASoUAA0APtFUo0uoJKMhsAgBABoJaQAARceGgx/xt8prQAD+6/6nz3YYNsa7GaDZBQcrFuUULH4hyUIPgeDoOE8ZP96Y7+GW9x/Xr/E0sLDrxbVx71HlJucv+v2Oi3jl9hnJw7gAgSAAAA==",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
       "DSCF2543.jpg": {
         "src": "/images/optimized/fujifilm/DSCF2543.webp",
         "width": 1920,
@@ -106,14 +82,6 @@
         "blurWidth": 13,
         "blurHeight": 20
       },
-      "DSCF2635.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF2635.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwAwCdASoUAA0APtFWo0uoJKMhsAgBABoJaQAAWyPa3GiW0M3PGAD+1tWu6K9GUh3WFeud52IuSPeFJIRvHILxT9U8dBEaAVyLsmCcq1DWjQeDty3Vl6PDPJnzkRVXefCqXjZrOEvP9lm3fg2/JwAA",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
       "DSCF2636.jpg": {
         "src": "/images/optimized/fujifilm/DSCF2636.webp",
         "width": 1920,
@@ -122,27 +90,11 @@
         "blurWidth": 20,
         "blurHeight": 13
       },
-      "DSCF2637.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF2637.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwAwCdASoUAA0APtFWo0uoJKMhsAgBABoJaQAATGO3rDmGfAwn6AD+mACm4jpX7oJdMHS8bGT2gI4xLE006UC6qd6M6iQFglElXY8PaCu7xVlCkd8p9N51H6Te0b8cAAA=",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
       "DSCF2787.jpg": {
         "src": "/images/optimized/fujifilm/DSCF2787.webp",
         "width": 1280,
         "height": 1920,
         "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACQAwCdASoNABQAPtFWpEuoJKOhsAgBABoJQAALjKbMnBibHwoAAP7uF5HVQJHYDxDlsuGuB7qrcmzfg/zMV4xWKkf8Ys99oeWdfgBgcoatCE1w2Ro/b4BOAPIGQg2gK5LMr1juRY30PmCa65IwWuTfzJU5JygAAAA=",
-        "blurWidth": 13,
-        "blurHeight": 20
-      },
-      "DSCF3959.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF3959.webp",
-        "width": 1280,
-        "height": 1920,
-        "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAwCdASoNABQAPtFUo0uoJKMhsAgBABoJZACdMoMrZGHi/wrgAP7YmllezjSCR0iij+J2BjOYAalWpQz/YcllZbjIFj5wAAA=",
         "blurWidth": 13,
         "blurHeight": 20
       },
@@ -186,14 +138,6 @@
         "blurWidth": 13,
         "blurHeight": 20
       },
-      "DSCF4828.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF4828.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACwAwCdASoUAA0APtFUo0uoJKMhsAgBABoJYwDCgCFNW7zKktyWKAD+79EheAgPSyIi5k4m/GSaXSmuGVu7ourtAUJsYEm5eLr7xtA8YfE+yg/DNkiQcAyyU3YiL55hZJkSdDGhHTdPsqKx3gAAAA==",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
       "DSCF4886.jpg": {
         "src": "/images/optimized/fujifilm/DSCF4886.webp",
         "width": 1920,
@@ -217,14 +161,6 @@
         "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADQAwCdASoNABQAPtFUo0uoJKMhsAgBABoJbACdMoRwAA1OrGPYTIAA+LLMGyG35K1NpwhYtRXUJW7miJYadtz4eyfel8EVWncmtxG8jd1QO5Q+rf41n8FJyI3qjWSb0/3mOzLsoGHMvc/N00MTYiz9QFRMISwuDZjRQicTCyfFbZhNhlTAMXPB9JlNEWEsCxAAAA==",
         "blurWidth": 13,
         "blurHeight": 20
-      },
-      "DSCF5002.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF5002.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwAwCdASoUAA0APtFUo0uoJKMhsAgBABoJYwCdMoADDHGyp5ad1jkAAP6Rt3R4WJFNfYbBfx+dreKrrEKQ3GuD0LBYSNoPnHiVLk3mGxLGCzd/G855uBin1LNRju+sxRYND36PRwNoJbOnkzvaqqABP3HUwP6UeGGFFJT4xGxpBOSkPbXJhqYOMIr9docQAAA=",
-        "blurWidth": 20,
-        "blurHeight": 13
       },
       "DSCF5017.jpg": {
         "src": "/images/optimized/fujifilm/DSCF5017.webp",
@@ -305,22 +241,6 @@
         "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoNABQAPtFUo0uoJKMhsAgBABoJQBTihH1HR5xcE7W1Jl2gAP7JhwCFBHtpQJui/4/RAgnp7/7E7FAr/GqhY5iPGTJ2BQQod0QSG4ayML4/kxyJbAPsq7GzrmvHroWbod6JjBusfRIvRagA",
         "blurWidth": 13,
         "blurHeight": 20
-      },
-      "DSCF5720.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF5720.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZQCACG/AzIGuxqwg3SwA/uaYCaZ0e1her/yt4LatqQ8EzLBQkRyLyvZb5sB54HbPlQkmNym+oDRCx4IfXptVJBmFuEVyx4tWunIU7AMwImyIXgayETAXLlK7BnnjCnnVAAAA",
-        "blurWidth": 20,
-        "blurHeight": 13
-      },
-      "DSCF5982.jpg": {
-        "src": "/images/optimized/fujifilm/DSCF5982.webp",
-        "width": 1920,
-        "height": 1280,
-        "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoUAA0APtFUo0uoJKMhsAgBABoJagCdMoACslm31KRyuBJTcUgA/tyMZMDTOOjM+RV3hPSpGpyJg4dj2uLHi+IZ9/Bq+E+RwHWHVcIfUNcdHQMJ8TASI0qxdFKh7wHVHasfQPqPHo5B4kX/NNCu5UnKaufi46+z816qxDegAAA=",
-        "blurWidth": 20,
-        "blurHeight": 13
       },
       "DSCF5986.jpg": {
         "src": "/images/optimized/fujifilm/DSCF5986.webp",
